@@ -1,9 +1,14 @@
 <template>
   <div class="home">
+    <h3>{{ counterTitle }}</h3>
     <div>
       <button @click="decreaseCounter" class="btn">-</button>
       <span class="counter">{{ counter }}</span>
       <button @click="increaseCounter" class="btn">+</button>
+    </div>
+    <div class="edit">
+      <h4>Edit counter title:</h4>
+      <input type="text" v-model="counterTitle">
     </div>
   </div>
 </template>
@@ -12,6 +17,7 @@
 import {ref} from "vue";
 
 const counter = ref(0);
+const counterTitle = ref('My Counter');
 
 const increaseCounter = () => {
   counter.value++
@@ -21,52 +27,6 @@ const decreaseCounter = () => {
   counter.value--
 }
 </script>
-<!--
-<script>
-import {ref} from "vue";
-
-export default {
-  setup() {
-    const counter = ref(0);
-
-    const increaseCounter = () => {
-      counter.value++
-    }
-
-    const decreaseCounter = () => {
-      counter.value--
-    }
-
-    return {
-      counter,
-      increaseCounter,
-      decreaseCounter
-    }
-  }
-}
-</script>
--->
-<!--
-<script>
-export default {
-  data () {
-    return {
-      counter: 0
-    }
-  },
-
-  methods: {
-    increaseCounter () {
-      this.counter++
-    },
-
-    decreaseCounter () {
-      this.counter--
-    }
-  }
-}
-</script>
--->
 <style>
   .home {
     padding: 20px;
@@ -78,5 +38,8 @@ export default {
   }
   .home .counter {
     font-size: 30px;
+  }
+  .edit {
+    margin-top: 60px;
   }
 </style>
