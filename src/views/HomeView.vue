@@ -12,7 +12,7 @@
     <p>This counter is {{ oddOrEven }}</p>
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input type="text" v-model="counterData.title">
+      <input type="text" v-model="counterData.title" v-autofocus>
     </div>
   </div>
 </template>
@@ -21,18 +21,18 @@
 import {
   reactive,
   computed,
-  watch,
-  onBeforeMount,
-  onMounted,
-  onUnmounted,
-  onBeforeUnmount,
-  onActivated,
-  onDeactivated,
-  onBeforeUpdate,
-  onUpdated
+  watch, onMounted
 } from "vue";
 
+// App title
+
 const appTitle = 'My Counter App'
+
+onMounted(() => {
+  console.log('title stuff')
+})
+
+// Counter data
 
 const counterData = reactive({
   count: 0,
@@ -57,38 +57,17 @@ const decreaseCounter = (amount) => {
   counterData.count -= amount
 }
 
-onBeforeMount(() => {
-  console.log('onBeforeMount')
-})
-
 onMounted(() => {
-  console.log('onMounted')
+  console.log('Do stuff related to counter')
 })
 
-onBeforeUnmount(() => {
-  console.log('onBeforeUnounted')
-})
+// Directives
 
-onUnmounted(() => {
-  console.log('onUnounted')
-})
-
-onActivated(() => {
-  console.log('onActivated')
-})
-
-onDeactivated(() => {
-  console.log('onDeactivated')
-})
-
-onBeforeUpdate(() => {
-  console.log('onBeforeUpdate');
-})
-
-onUpdated(() => {
-  console.log('onUpdated');
-})
-
+const vAutofocus = {
+  mounted: (el) => {
+    el.focus()
+  }
+}
 </script>
 <style>
   .home {
