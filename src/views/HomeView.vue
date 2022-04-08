@@ -24,7 +24,12 @@ import {
   watch,
   onBeforeMount,
   onMounted,
-  onUnmounted, onBeforeUnmount
+  onUnmounted,
+  onBeforeUnmount,
+  onActivated,
+  onDeactivated,
+  onBeforeUpdate,
+  onUpdated
 } from "vue";
 
 const appTitle = 'My Counter App'
@@ -67,6 +72,23 @@ onBeforeUnmount(() => {
 onUnmounted(() => {
   console.log('onUnounted')
 })
+
+onActivated(() => {
+  console.log('onActivated')
+})
+
+onDeactivated(() => {
+  console.log('onDeactivated')
+})
+
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdate');
+})
+
+onUpdated(() => {
+  console.log('onUpdated');
+})
+
 </script>
 <style>
   .home {
