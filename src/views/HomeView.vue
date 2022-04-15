@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>{{  appTitle }}</h2>
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
     <h3>{{ counterData.title }}</h3>
     <div>
       <button @click="decreaseCounter(2)" class="btn">--</button>
@@ -22,17 +22,21 @@ import {
   reactive,
   computed,
   watch,
-  onMounted
+  onMounted, ref
 } from "vue";
 
 import { vAutofocus } from "@/directives/vAutofocus";
 
 // App title
 
-const appTitle = 'My Counter App'
+const appTitle = 'My Counter App';
+
+// Creating a data ref with the same name as the template ref will make that ref
+// available in the current scope.
+const appTitleRef = ref(null)
 
 onMounted(() => {
-  console.log('title stuff')
+  console.log(`The app title is ${appTitleRef.value.offsetWidth} pixels wide`);
 })
 
 // Counter data
