@@ -10,6 +10,7 @@
         consectetur doloribus eaque fugit illum ipsa iure laborum magnam optio
         possimus qui ratione, recusandae rerum similique soluta suscipit
         tempora velit voluptatibus.</p>
+
     </Modal>
   </div>
 </template>
