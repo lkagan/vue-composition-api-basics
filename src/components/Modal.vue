@@ -2,6 +2,7 @@
   <teleport to="#modals-container">
     <div class="modal">
       <h2><slot name="title" /></h2>
+      <h3>{{ subTitle }}</h3>
       <slot />
       <button >Hide modal</button>
       <div>
@@ -16,7 +17,15 @@ import { useSlots } from "vue";
 
 const slots = useSlots();
 
+const props = defineProps({
+  subTitle: {
+    type: String,
+    default: "No title provided"
+  }
+});
+
 console.log(slots.title()[0].children);
+console.log(props.subTitle);
 </script>
 
 <style>

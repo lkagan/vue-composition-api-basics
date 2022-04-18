@@ -2,7 +2,7 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true;">Show modal</button>
-    <Modal v-if="showModal">
+    <Modal v-if="showModal" subTitle="My Subtitle">
       <template #title>
         <h1>My new title</h1>
       </template>
