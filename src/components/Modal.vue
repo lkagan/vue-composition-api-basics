@@ -4,7 +4,8 @@
       <h2><slot name="title" /></h2>
       <h3>{{ subTitle }}</h3>
       <slot />
-      <button >Hide modal</button>
+      <button @click="$emit('hideModal')">Hide modal (expose custom event)</button>
+      <button @click="handleButtonClick">Hide modal (expose custom event through local handler)</button>
       <div>
         Programmatically accessing a slot in the template: {{ $slots.title()[0].children }}
       </div>
@@ -26,6 +27,12 @@ const props = defineProps({
 
 console.log(slots.title()[0].children);
 console.log(props.subTitle);
+
+const emit = defineEmits(['hideModal']);
+
+const handleButtonClick = () => {
+  emit('hideModal');
+}
 </script>
 
 <style>
