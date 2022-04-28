@@ -18,19 +18,19 @@
 </template>
 
 <script setup>
-import {
-  reactive,
-  computed,
-  watch,
-  onMounted,
-  ref,
-  nextTick
-} from "vue";
-
+import { onMounted, ref } from "vue";
+import { useCounter } from "../use/useCounter";
 import { vAutofocus } from "@/directives/vAutofocus";
 
-// App title
+// Import composable
+const {
+  counterData,
+  oddOrEven,
+  increaseCounter,
+  decreaseCounter
+} = useCounter();
 
+// App title
 const appTitle = 'My Counter App';
 
 // Creating a data ref with the same name as the template ref will make that ref
@@ -40,38 +40,6 @@ const appTitleRef = ref(null)
 onMounted(() => {
   console.log(`The app title is ${appTitleRef.value.offsetWidth} pixels wide`);
 })
-
-// Counter data
-
-const counterData = reactive({
-  count: 0,
-  title: 'My Counter'
-});
-
-watch(() => counterData.count, (newValue, oldValue) => {
-  if (newValue === 20) {
-    alert('Congrats!  You reached 20!')
-  }
-});
-
-const oddOrEven = computed(() => {
-  return counterData.count % 2 === 0 ? 'even' : 'odd';
-});
-
-const increaseCounter = async (amount, e) => {
-  counterData.count += amount
-  await nextTick();
-  console.log('Counter DOM update completed');
-
-  // Alternative syntax uses callback.
-  // nextTick(() => {
-  //   console.log('Counter DOM update completed');
-  // });
-}
-
-const decreaseCounter = (amount) => {
-  counterData.count -= amount
-}
 
 onMounted(() => {
   console.log('Do stuff related to counter')
