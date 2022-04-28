@@ -17,6 +17,7 @@
         v-if="showModal"
         subTitle="My Subtitle"
         @hideModal="showModal = false"
+        :userData="userData"
     >
     <template #title>
         <h1>My new title</h1>
@@ -35,6 +36,7 @@ import { ref } from "vue";
 import Modal from "@/components/Modal.vue";
 import ModalDark from "@/components/ModalDark.vue";
 
+const props = defineProps({ userData: { type: Object } });
 const showModal = ref(false);
 const showDarkModals = ref(false);
 

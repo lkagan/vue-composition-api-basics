@@ -28,6 +28,10 @@ const props = defineProps({
   subTitle: {
     type: String,
     default: "No title provided"
+  },
+
+  userData: {
+    type: Object
   }
 });
 
