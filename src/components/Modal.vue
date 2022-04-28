@@ -12,6 +12,10 @@
       <div>
         Programmatically accessing a slot in the template: {{ $slots.title()[0].children }}
       </div>
+      <div>
+        Username is {{ userData.username }}
+      </div>
+
     </div>
   </teleport>
 </template>
@@ -25,6 +29,10 @@ const props = defineProps({
   subTitle: {
     type: String,
     default: "No title provided"
+  },
+
+  userData: {
+    type: Object
   }
 });
 
