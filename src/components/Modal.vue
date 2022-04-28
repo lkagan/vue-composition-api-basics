@@ -12,12 +12,15 @@
       <div>
         Programmatically accessing a slot in the template: {{ $slots.title()[0].children }}
       </div>
+      <div>
+        Username is {{ userData.username }}
+      </div>
     </div>
   </teleport>
 </template>
 
 <script setup>
-import { useSlots } from "vue";
+import { inject, useSlots } from "vue";
 
 const slots = useSlots();
 
@@ -36,6 +39,8 @@ const emit = defineEmits(['hideModal', 'update:modelValue']);
 const handleButtonClick = () => {
   emit('hideModal');
 }
+
+const userData = inject('userData');
 
 </script>
 
